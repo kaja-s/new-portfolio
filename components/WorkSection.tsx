@@ -36,9 +36,10 @@ export default function WorkSection() {
 
   return (
     <section className="min-h-screen px-8 md:px-16 lg:px-24 py-24 relative z-10 bg-red text-white">
-      <h2 className="text-4xl font-regular lowercase mb-16">work</h2>
+      <div className="max-w-screen-sm mx-auto">
+        <h2 className="font-regular lowercase mb-16" style={{ fontSize: '26px' }}>work</h2>
 
-      <div className="space-y-8 max-w-3xl">
+        <div className="space-y-8">
         {works.map((work, index) => (
           <motion.div
             key={index}
@@ -51,25 +52,19 @@ export default function WorkSection() {
             transition={{ delay: index * 0.1 }}
           >
             <h3
-              className="uppercase tracking-tight text-white mb-2 relative inline-block"
+              className="uppercase tracking-tight mb-2 transition-colors duration-300"
               style={{ 
                 fontFamily: 'Akkurat Mono, monospace',
+                fontWeight: '400',
                 fontSize: '16px',
-                letterSpacing: '-0.02em'
+                letterSpacing: '-0.02em',
+                color: hoveredIndex === index ? 'var(--black)' : 'var(--white)'
               }}
             >
               {work.title}
-              <motion.div
-                className="absolute bottom-0 left-0 right-0 h-[1px] bg-black origin-left"
-                initial={{ scaleX: 0 }}
-                animate={{
-                  scaleX: hoveredIndex === index ? 1 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-              />
             </h3>
             <p 
-              className="uppercase tracking-tight mt-2"
+              className="uppercase tracking-tight"
               style={{ 
                 color: '#FDB5A5',
                 fontFamily: 'Akkurat Mono, monospace',
@@ -81,6 +76,7 @@ export default function WorkSection() {
             </p>
           </motion.div>
         ))}
+        </div>
       </div>
     </section>
   );

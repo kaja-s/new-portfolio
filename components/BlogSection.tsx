@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const blogPosts = [
@@ -12,31 +13,40 @@ const blogPosts = [
 ];
 
 export default function BlogSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <section className="min-h-screen px-8 md:px-16 lg:px-24 py-24 relative z-10 bg-black text-white">
-      <h2 className="text-4xl font-bold lowercase mb-16">blog posts</h2>
+      <div className="max-w-screen-sm mx-auto">
+        <h2 className="font-regular lowercase mb-16" style={{ fontSize: '26px' }}>blog posts</h2>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="space-y-8">
         {blogPosts.map((post, index) => (
           <motion.div
             key={index}
-            className="group cursor-pointer"
+            className="cursor-pointer py-4"
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            whileHover={{ y: -10 }}
           >
-            <div className="bg-white/5 hover:bg-red/20 transition-colors duration-300 rounded-lg p-6 h-full border border-white/10 hover:border-red/50">
-              <span className="font-mono text-xs uppercase tracking-tight text-white/50 mb-4 block">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <h3 className="font-mono text-sm uppercase tracking-tight">
-                {post}
-              </h3>
-            </div>
+            <h3
+              className="uppercase tracking-tight mb-2 transition-colors duration-300"
+              style={{ 
+                fontFamily: 'Akkurat Mono, monospace',
+                fontWeight: '400',
+                fontSize: '16px',
+                letterSpacing: '-0.02em',
+                color: hoveredIndex === index ? 'var(--red)' : 'var(--white)'
+              }}
+            >
+              {post}
+            </h3>
           </motion.div>
         ))}
+        </div>
       </div>
     </section>
   );
