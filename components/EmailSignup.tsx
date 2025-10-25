@@ -36,7 +36,7 @@ export default function EmailSignup() {
 
   return (
     <section className="min-h-[60vh] px-8 md:px-16 lg:px-24 py-24 relative z-10 bg-red text-white flex items-center">
-      <div className="max-w-2xl w-full mx-auto">
+      <div className="max-w-screen-sm w-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
