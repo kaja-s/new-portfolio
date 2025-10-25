@@ -21,29 +21,39 @@
   --background: #ffffff;
   --foreground: #1E1E1E;
   --red: #FB461F;
+  --light-red: #FDB5A5;
   --black: #1E1E1E;
+}
+
+/* Define Tailwind v4 custom colors */
+/* stylelint-disable-next-line at-rule-no-unknown */
+@theme {
+  --color-red: #FB461F;
+  --color-light-red: #FDB5A5;
+  --color-black: #1E1E1E;
+  --color-white: #ffffff;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body);
+  font-family: 'Akkurat Mono', monospace;
   letter-spacing: -0.02em;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
-/* Titles use Lay Grotesk Bold */
+/* Titles use Lay Grotesk Black */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-title);
-  font-weight: 700;
+  font-family: 'Lay Grotesk', sans-serif;
+  font-weight: 900;
   letter-spacing: normal;
 }
 
 /* All other text uses Akkurat Mono with -2% letter spacing */
 p, span, div, a, button, input, textarea {
-  font-family: var(--font-body);
+  font-family: 'Akkurat Mono', monospace;
   letter-spacing: -0.02em;
 }
 
