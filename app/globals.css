@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1E1E1E;
+  --red: #FB461F;
+  --black: #1E1E1E;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-red: var(--red);
+  --color-black: var(--black);
+  --color-white: #ffffff;
+  --font-title: var(--font-lay-grotesk);
+  --font-body: var(--font-akkurat-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  letter-spacing: -0.02em;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Titles use Lay Grotesk Bold */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: normal;
+}
+
+/* All other text uses Akkurat Mono with -2% letter spacing */
+p, span, div, a, button, input, textarea {
+  font-family: var(--font-body);
+  letter-spacing: -0.02em;
+}
+
+* {
+  box-sizing: border-box;
+}
