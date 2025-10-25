@@ -50,35 +50,65 @@ const experiences: Experience[] = [
 
 export default function ExperienceSection() {
   return (
-    <section className="min-h-screen px-8 md:px-16 lg:px-24 py-24 relative z-10 bg-white">
-      <h2 className="text-4xl font-bold lowercase mb-16 text-black">experience</h2>
+    <section className="min-h-screen px-8 md:px-16 lg:px-24 py-24 relative z-10 bg-black text-white">
+      <div className="max-w-screen-sm mx-auto">
+        <h2 className="font-regular lowercase mb-16" style={{ fontSize: '26px' }}>experience</h2>
 
-      <div className="space-y-12 max-w-5xl">
+        <div className="space-y-12">
         {experiences.map((exp, index) => (
           <motion.div
             key={index}
-            className="grid md:grid-cols-[120px_1fr] gap-8 border-l-2 border-red/30 pl-8 pb-8"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="grid md:grid-cols-[120px_1fr] gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
           >
-            <div className="font-mono text-sm uppercase tracking-tight text-black/60">
+            <div 
+              className="uppercase tracking-tight text-white"
+              style={{ 
+                fontFamily: 'Akkurat Mono, monospace',
+                fontSize: '16px',
+                letterSpacing: '-0.02em'
+              }}
+            >
               {exp.year}
             </div>
             <div>
-              <h3 className="text-2xl font-bold lowercase text-black mb-1">
+              <h3 
+                className="uppercase tracking-tight text-white mb-1"
+                style={{ 
+                  fontFamily: 'Akkurat Mono, monospace',
+                  fontSize: '16px',
+                  letterSpacing: '-0.02em'
+                }}
+              >
                 {exp.company}
               </h3>
-              <p className="font-mono text-xs uppercase tracking-tight text-red mb-4">
+              <p 
+                className="uppercase tracking-tight text-white mb-4"
+                style={{ 
+                  fontFamily: 'Akkurat Mono, monospace',
+                  fontSize: '16px',
+                  letterSpacing: '-0.02em'
+                }}
+              >
                 {exp.role}
               </p>
-              <p className="text-black/70 leading-relaxed">
+              <p 
+                className="text-white/60 leading-relaxed"
+                style={{ 
+                  fontFamily: 'Akkurat Mono, monospace',
+                  fontSize: '16px',
+                  letterSpacing: '-0.02em'
+                }}
+              >
                 {exp.description}
               </p>
             </div>
           </motion.div>
         ))}
+        </div>
       </div>
     </section>
   );

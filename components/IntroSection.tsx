@@ -7,13 +7,16 @@ import Image from 'next/image';
 export default function IntroSection() {
   const [copied, setCopied] = useState(false);
   const [typedText, setTypedText] = useState('');
+  const [isClient, setIsClient] = useState(false);
   
   const fullText = "a product designer based in berlin. i design and build interfaces for ai and early-stage startups from 0 → 1.";
   const secondLine = "with experience across sf, berlin, and brussels, i work independently to design, code, and launch products that scale.";
+  const completeText = fullText + '\n\n' + secondLine;
 
   useEffect(() => {
+    setIsClient(true);
     let index = 0;
-    const text = fullText + '\n\n' + secondLine;
+    const text = completeText;
     const timer = setInterval(() => {
       if (index < text.length) {
         setTypedText(text.substring(0, index + 1));
@@ -41,23 +44,23 @@ export default function IntroSection() {
 
   return (
     <section className="min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 relative z-10 bg-red text-white">
-      {/* Logo in top left corner */}
-      <motion.div
-        className="absolute top-8 left-8 md:left-16 lg:left-24"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        whileHover={{ scale: 1.1, rotate: 5 }}
-      >
-        <Image src="/logo.svg" alt="Kaja Skerlj Logo" width={32} height={32} className="text-white" />
-      </motion.div>
+      <div className="max-w-screen-sm mx-auto w-full relative">
+        {/* Logo in top left of container */}
+        <motion.div
+          className="absolute top-[-100px] left-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          whileHover={{ scale: 1.1, rotate: 5 }}
+        >
+          <Image src="/logo.svg" alt="Kaja Skerlj Logo" width={32} height={32} className="text-white" />
+        </motion.div>
 
-      <motion.div
-        className="max-w-screen-sm"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
         <h1 
           className="font-bold lowercase mb-8"
           style={{ fontSize: '26px' }}
@@ -66,7 +69,7 @@ export default function IntroSection() {
         </h1>
 
         <div className="font-mono uppercase tracking-tight space-y-4 mb-8" style={{ fontSize: '16px', letterSpacing: '-0.02em' }}>
-          <p className="whitespace-pre-wrap">{typedText}</p>
+          <p className="whitespace-pre-wrap">{isClient ? typedText : completeText}</p>
         </div>
 
         <motion.div
@@ -85,18 +88,19 @@ export default function IntroSection() {
             </span>
           )}
         </motion.div>
-      </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M12 5v14M19 12l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </motion.div>
+        {/* Scroll indicator - below email copy section */}
+        <motion.div
+          className="mt-8"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 5v14M19 12l-7 7-7-7" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter"/>
+          </svg>
+        </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
