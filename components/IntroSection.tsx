@@ -9,7 +9,7 @@ export default function IntroSection() {
   const [typedText, setTypedText] = useState('');
   
   const fullText = "a product designer based in berlin. i design and build interfaces for ai and early-stage startups from 0 → 1.";
-  const secondLine = "with experience across sf, berlin, and india, i work independently to design, code, and launch products that scale.";
+  const secondLine = "with experience across sf, berlin, and brussels, i work independently to design, code, and launch products that scale.";
 
   useEffect(() => {
     let index = 0;
@@ -49,7 +49,7 @@ export default function IntroSection() {
         transition={{ delay: 0.5 }}
         whileHover={{ scale: 1.1, rotate: 5 }}
       >
-        <Image src="/logo.svg" alt="Kaja Skerlj Logo" width={40} height={40} className="text-white" />
+        <Image src="/logo.svg" alt="Kaja Skerlj Logo" width={32} height={32} className="text-white" />
       </motion.div>
 
       <motion.div
@@ -71,6 +71,7 @@ export default function IntroSection() {
 
         <motion.div
           className="font-mono text-sm uppercase tracking-tight"
+          style={{ color: '#FDB5A5' }}
           animate={{
             opacity: copied ? [1, 0.5, 1] : 1,
           }}
@@ -80,7 +81,7 @@ export default function IntroSection() {
             <span className="text-white">✓ email copied to clipboard</span>
           ) : (
             <span>
-              press <kbd className="px-2 py-1 bg-white/20 rounded">C</kbd> to copy my email
+              press <kbd className="px-1.5 py-1 bg-[#FDB5A5]" style={{ color: 'var(--red)' }}>C</kbd> to copy my email
             </span>
           )}
         </motion.div>
