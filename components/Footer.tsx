@@ -144,7 +144,7 @@ export default function Contact() {
           </a>
 
           <a
-            href="https://linkedin.com/kajaskerlj"
+            href="https://www.linkedin.com/in/kajaskerlj/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-1 text-sm text-decoration-underline text-white hover:text-black transition-colors duration-200 group underline"
