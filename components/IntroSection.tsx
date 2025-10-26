@@ -44,8 +44,17 @@ export default function IntroSection() {
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 relative z-10 bg-red text-white">
-      <CurvedTrackLanes strokeColor="#000000" />
+    <section 
+      className="min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 relative text-white overflow-hidden"
+      style={{ 
+        position: 'relative',
+        backgroundImage: 'url(/photos/bg.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundColor: '#FB461F'
+      }}
+    >
+      <CurvedTrackLanes strokeColor="#FFFFFF20" />
       <div className="max-w-screen-sm mx-auto w-full relative z-10">
 
         <motion.div

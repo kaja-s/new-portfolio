@@ -57,7 +57,16 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className="min-h-screen px-8 md:px-16 lg:px-24 py-24 relative z-10 bg-black text-white">
+    <section 
+      className="min-h-[80vh] flex flex-col justify-center px-8 md:px-16 lg:px-24 relative text-white overflow-hidden"
+      style={{ 
+        position: 'relative',
+        backgroundImage: 'url(/photos/bg.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundColor: '#FB461F'
+      }}
+    >
       <StraightTrackLanes strokeColor="#FFFFFF20" />
       <div className="max-w-screen-sm mx-auto relative z-10">
         <h2 className="text-4xl font-bold lowercase mb-16">about</h2>
@@ -66,7 +75,7 @@ export default function AboutSection() {
           {aboutText.map((section, index) => (
             <span
               key={index}
-              className="hover:text-red transition-colors duration-300 cursor-pointer inline-block"
+              className="hover:text-black transition-colors duration-300 cursor-pointer inline-block"
               onMouseEnter={() => setHoveredSection(section.hover)}
               onMouseLeave={() => setHoveredSection(null)}
             >
