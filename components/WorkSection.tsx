@@ -1,14 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import StraightTrackLanes from './StraightTrackLanes';
 
 interface WorkItem {
   title: string;
   subtitle: string;
   slug: string;
+  image?: string;
 }
 
 const works: WorkItem[] = [
@@ -31,6 +33,7 @@ const works: WorkItem[] = [
     title: 'enhancing communication',
     subtitle: 'card game for couples',
     slug: '/communication',
+    image: '/photos/wordme.avif',
   },
   {
     title: 'edtech for students',
@@ -96,6 +99,33 @@ export default function WorkSection() {
           </Link>
         ))}
         </div>
+
+      {/* Image reveal area - positioned outside max-width on the right */}
+      <div className="hidden md:block fixed right-8 lg:right-24 top-1/2 -translate-y-1/2 pointer-events-none z-0">
+        <AnimatePresence mode="wait">
+          {hoveredIndex !== null && works[hoveredIndex].image && (
+            <motion.div
+              key={hoveredIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ 
+                duration: 0.3,
+                ease: "easeOut"
+              }}
+              className="select-none"
+            >
+              <Image 
+                src={works[hoveredIndex].image || ''} 
+                alt={works[hoveredIndex].title}
+                width={600}
+                height={600}
+                className="object-cover"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </section>
   );
 }
