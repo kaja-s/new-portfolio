@@ -1,4 +1,3 @@
-import TrackLanes from '@/components/TrackLanes';
 import IntroSection from '@/components/IntroSection';
 import WorkSection from '@/components/WorkSection';
 import BlogSection from '@/components/BlogSection';
@@ -10,7 +9,6 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <main className="relative">
-      <TrackLanes />
       <IntroSection />
       <WorkSection />
       <BlogSection />

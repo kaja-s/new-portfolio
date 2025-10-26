@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import StraightTrackLanes from './StraightTrackLanes';
 
 const blogPosts = [
   'first 6 months in berlin',
@@ -17,7 +18,8 @@ export default function BlogSection() {
 
   return (
     <section className="min-h-screen px-8 md:px-16 lg:px-24 py-24 relative z-10 bg-black text-white">
-      <div className="max-w-screen-sm mx-auto">
+      <StraightTrackLanes strokeColor="#FFFFFF20" />
+      <div className="max-w-screen-sm mx-auto relative z-10">
         <h2 className="font-regular lowercase mb-16" style={{ fontSize: '26px' }}>blog posts</h2>
 
         <div className="space-y-8">

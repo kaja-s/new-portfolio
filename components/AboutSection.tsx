@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import StraightTrackLanes from './StraightTrackLanes';
 
 interface HoverArea {
   text: string;
@@ -18,7 +19,7 @@ export default function AboutSection() {
       hover: 'slovenia',
       image: '/photos/kaja-skerlj.png',
       isPhoto: true,
-      width: 500,
+      width: 400,
       height: 400
     },
     { 
@@ -26,7 +27,7 @@ export default function AboutSection() {
       hover: 'san francisco',
       image: '/photos/san-francisco.png',
       isPhoto: true,
-      width: 500,
+      width: 400,
       height: 400
     },
     { 
@@ -34,7 +35,7 @@ export default function AboutSection() {
       hover: 'codeplain',
       image: '/photos/codeplain-team.png',
       isPhoto: true,
-      width: 500,
+      width: 400,
       height: 500
     },
     { 
@@ -50,14 +51,15 @@ export default function AboutSection() {
       hover: 'track',
       image: '/photos/world-championships.png',
       isPhoto: true,
-      width: 500,
+      width: 400,
       height: 400
     },
   ];
 
   return (
     <section className="min-h-screen px-8 md:px-16 lg:px-24 py-24 relative z-10 bg-black text-white">
-      <div className="max-w-screen-sm mx-auto">
+      <StraightTrackLanes strokeColor="#FFFFFF20" />
+      <div className="max-w-screen-sm mx-auto relative z-10">
         <h2 className="text-4xl font-bold lowercase mb-16">about</h2>
 
         <div className="text-[16px] leading-relaxed space-y-6">

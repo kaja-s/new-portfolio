@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import CurvedTrackLanes from './CurvedTrackLanes';
 
 export default function IntroSection() {
   const [copied, setCopied] = useState(false);
@@ -44,17 +45,8 @@ export default function IntroSection() {
 
   return (
     <section className="min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 relative z-10 bg-red text-white">
-      <div className="max-w-screen-sm mx-auto w-full relative">
-        {/* Logo in top left of container */}
-        <motion.div
-          className="absolute top-[-100px] left-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          whileHover={{ scale: 1.1, rotate: 5 }}
-        >
-          <Image src="/logo.svg" alt="Kaja Skerlj Logo" width={32} height={32} className="text-white" />
-        </motion.div>
+      <CurvedTrackLanes strokeColor="#000000" />
+      <div className="max-w-screen-sm mx-auto w-full relative z-10">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
