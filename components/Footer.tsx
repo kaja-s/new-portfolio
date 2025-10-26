@@ -1,44 +1,180 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import FeatherIcon from "feather-icons-react";
+import React, { useState, useEffect } from "react";
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+export default function Contact() {
+  const [visitorLocation, setVisitorLocation] = useState<string>("");
 
-  const socials = [
-    { name: 'linkedin', url: '#' },
-    { name: 'github', url: '#' },
-    { name: 'twitter', url: '#' },
-  ];
+  useEffect(() => {
+    // Country code to full name mapping
+    const countryNames: { [key: string]: string } = {
+      SI: "Slovenia",
+      US: "United States",
+      GB: "United Kingdom",
+      DE: "Germany",
+      FR: "France",
+      IT: "Italy",
+      ES: "Spain",
+      NL: "Netherlands",
+      CA: "Canada",
+      AU: "Australia",
+      JP: "Japan",
+      CN: "China",
+      IN: "India",
+      BR: "Brazil",
+      MX: "Mexico",
+      AR: "Argentina",
+      ZA: "South Africa",
+      EG: "Egypt",
+      NG: "Nigeria",
+      KE: "Kenya",
+      RU: "Russia",
+      TR: "Turkey",
+      SE: "Sweden",
+      NO: "Norway",
+      DK: "Denmark",
+      FI: "Finland",
+      CH: "Switzerland",
+      AT: "Austria",
+      BE: "Belgium",
+      PT: "Portugal",
+      GR: "Greece",
+      PL: "Poland",
+      CZ: "Czech Republic",
+      HU: "Hungary",
+      RO: "Romania",
+      BG: "Bulgaria",
+      HR: "Croatia",
+      RS: "Serbia",
+      BA: "Bosnia and Herzegovina",
+      ME: "Montenegro",
+      MK: "North Macedonia",
+      AL: "Albania",
+      XK: "Kosovo",
+      SK: "Slovakia",
+      LT: "Lithuania",
+      LV: "Latvia",
+      EE: "Estonia",
+      IE: "Ireland",
+      IS: "Iceland",
+      MT: "Malta",
+      CY: "Cyprus",
+      LU: "Luxembourg",
+      MC: "Monaco",
+      LI: "Liechtenstein",
+      AD: "Andorra",
+      SM: "San Marino",
+      VA: "Vatican City",
+    };
+
+    const fetchVisitorLocation = async () => {
+      try {
+        // Add timeout to prevent hanging requests
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+
+        const response = await fetch("https://ipapi.co/json/", {
+          signal: controller.signal,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.city && data.country) {
+          const countryName = countryNames[data.country] || data.country;
+          setVisitorLocation(`${data.city}, ${countryName}`);
+        } else if (data.country) {
+          const countryName = countryNames[data.country] || data.country;
+          setVisitorLocation(countryName);
+        }
+      } catch (error) {
+        // Silently fail - this is just a nice-to-have feature
+        console.log("Could not fetch location:", error);
+      }
+    };
+
+    // Only fetch on client side
+    if (typeof window !== "undefined") {
+      fetchVisitorLocation();
+    }
+  }, []);
 
   return (
-    <footer className="px-8 md:px-16 lg:px-24 py-12 relative z-10 bg-black text-white border-t border-white/10">
+    <section id="contact" className="pt-14 sm:pt-20 pb-6 px-5" style={{ 
+      position: 'relative',
+      backgroundImage: 'url(/photos/bg.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundColor: '#FB461F'
+    }}>
       <div className="max-w-screen-sm mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="font-mono text-xs uppercase tracking-tight text-white/50">
-          © {currentYear} kaja skerlj
-        </div>
+        <h2 className="text-sm font-bold text-white mb-2">
+          let&apos;s get in touch
+        </h2>
 
-        <div className="flex gap-8">
-          {socials.map((social) => (
-            <motion.a
-              key={social.name}
-              href={social.url}
-              className="font-mono text-xs uppercase tracking-tight text-white/70 hover:text-red transition-colors"
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
+        <div className="flex items-center space-x-6">
+          <a
+            href="https://substack.com/@kajaskerlj"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-1 text-sm text-decoration-underline text-white hover:text-black transition-colors duration-200 group underline"
+          >
+            <span className="text-white group-hover:text-black underline duration-200">
+              blog
+            </span>
+            <FeatherIcon icon="arrow-up-right" size="16" strokeWidth={1} />
+          </a>
+          <a
+            href="mailto:kaja.skerlj@gmail.com"
+            className="flex items-center space-x-1 text-sm text-decoration-underline text-white hover:text-black transition-colors duration-200 group underline"
+          >
+            <span className="text-white group-hover:text-black underline duration-200">
+              email
+            </span>
+            <FeatherIcon icon="arrow-up-right" size="16" strokeWidth={1} />
+          </a>
+
+          <a
+            href="https://linkedin.com/kajaskerlj"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-1 text-sm text-decoration-underline text-white hover:text-black transition-colors duration-200 group underline"
+          >
+            <span className="text-white group-hover:text-black underline duration-200">
+              linkedin
+            </span>
+            <FeatherIcon icon="arrow-up-right" size="16" strokeWidth={1} />
+          </a>
+        </div>
+        <div className="mt-10 text-left">
+          <p className="text-xs text-light-red">
+            built with{" "}
+            <a
+              href="https://nextjs.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-light-red hover:text-black underline transition-colors duration-200"
             >
-              {social.name}
-            </motion.a>
-          ))}
-        </div>
-
-        <div className="font-mono text-xs uppercase tracking-tight text-white/50">
-          designed & developed by kaja
-        </div>
+              next.js
+            </a>{" "}
+            by me
+          </p>
+          {visitorLocation && (
+            <p className="text-xs text-light-red mt-1">
+              last visitor from {visitorLocation}
+            </p>
+          )}
         </div>
       </div>
-    </footer>
+    </section>
   );
 }
-
