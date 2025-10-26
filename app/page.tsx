@@ -11,10 +11,7 @@ export default function Home() {
     <main className="relative">
       <IntroSection />
       <WorkSection />
-      <BlogSection />
-      <ExperienceSection />
       <AboutSection />
-      <EmailSignup />
       <Footer />
     </main>
   );
