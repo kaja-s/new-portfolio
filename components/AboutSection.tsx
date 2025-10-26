@@ -49,7 +49,7 @@ export default function AboutSection() {
     { 
       text: "\n\nwhen i started high school, i knew i wanted to attend a top us university on a track and field scholarship. i represented slovenia at the european and world youth championships, and 4 years after my goal was set, i landed in the us.", 
       hover: 'track',
-      image: '/photos/world-championships.png',
+      image: '/photos/running.png',
       isPhoto: true,
       width: 400,
       height: 400
