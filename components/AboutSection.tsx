@@ -16,43 +16,33 @@ export default function AboutSection() {
   const aboutText = [
     { 
       text: "hi, I'm kaja skerlj and i grew up in slovenia.", 
-      hover: 'slovenia',
+      hover: 'kaja skerlj profile image',
       image: '/photos/kaja-skerlj.png',
-      isPhoto: true,
-      width: 400,
-      height: 400
+      isPhoto: true
     },
     { 
       text: "my running and professional career brought me to many places including san francisco, pennsylvania, brussels, and berlin.", 
       hover: 'san francisco',
       image: '/photos/san-francisco.png',
-      isPhoto: true,
-      width: 400,
-      height: 400
+      isPhoto: true
     },
     { 
       text: "\n\ni'm the first designer at *codeplain, designing spec-driven ai interfaces.", 
-      hover: 'codeplain',
+      hover: 'codeplain team',
       image: '/photos/codeplain-team.png',
-      isPhoto: true,
-      width: 400,
-      height: 500
+      isPhoto: true
     },
     { 
       text: "\n\ni spent the last 5 years in the us where i graduated in product design and a master's in technical entrepreneurship at lehigh university.", 
-      hover: 'lehigh',
+      hover: 'lehigh university',
       image: '/photos/lehigh.png',
-      isPhoto: true,
-      width: 400,
-      height: 500
+      isPhoto: true
     },
     { 
       text: "\n\nwhen i started high school, i knew i wanted to attend a top us university on a track and field scholarship. i represented slovenia at the european and world youth championships, and 4 years after my goal was set, i landed in the us.", 
-      hover: 'track',
-      image: '/photos/running.png',
-      isPhoto: true,
-      width: 400,
-      height: 400
+      hover: 'track and field',
+      image: '/photos/running2.png',
+      isPhoto: true
     },
   ];
 
@@ -86,7 +76,7 @@ export default function AboutSection() {
       </div>
 
       {/* Image reveal area - positioned outside max-width on the right */}
-      <div className="hidden md:block fixed right-8 lg:right-24 top-1/2 -translate-y-1/2 pointer-events-none">
+      <div className="hidden md:block fixed right-8 lg:right-24 top-1/2 -translate-y-1/2 pointer-events-none z-0">
         <AnimatePresence mode="wait">
           {hoveredSection && (
             <motion.div
@@ -104,8 +94,8 @@ export default function AboutSection() {
                 <Image 
                   src={aboutText.find(t => t.hover === hoveredSection)?.image || ''} 
                   alt={hoveredSection}
-                  width={aboutText.find(t => t.hover === hoveredSection)?.width || 500}
-                  height={aboutText.find(t => t.hover === hoveredSection)?.height || 500}
+                  width={400}
+                  height={400}
                   className="object-cover"
                 />
               ) : (
