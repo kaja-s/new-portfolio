@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import StraightTrackLanes from './StraightTrackLanes';
+import ReverseCurvedLanes from './ReverseCurvedLanes';
 
 interface HoverArea {
   text: string;
@@ -67,7 +67,7 @@ export default function AboutSection() {
         backgroundColor: '#FB461F'
       }}
     >
-      <StraightTrackLanes strokeColor="#FFFFFF20" />
+      <ReverseCurvedLanes strokeColor="#FFFFFF20" />
       <div className="max-w-screen-sm mx-auto relative z-10">
         <h2 className="text-4xl font-bold lowercase mb-16">about</h2>
 
